@@ -1,0 +1,74 @@
+<<echo=FALSE, results=hide>>=
+
+first.value <- sample(-50:20,1)
+last.value <- sample(50:100,1)
+
+my.idx <- first.value:last.value
+ 
+idx.rnd <- sample(1:5,1)
+
+x <- my.idx[idx.rnd]
+y <- my.idx[length(my.idx)-2]
+ 
+my.answers <- character(5)
+my.answers[1] <- paste0('x = ',x, ', ','y = ',y)
+my.answers[2] <- paste0('x = ',y, ', ','y = ',x)
+my.answers[3] <- paste0('x = ',x+5, ', ','y = ',y-10)
+my.answers[4] <- paste0('x = ',x-2, ', ','y = ',y+10)
+my.answers[5] <- paste0('x = ',x+12, ', ','y = ',y+12)
+
+
+if (lan == 'en') {
+  question.1 <- 'Consider the following code.'
+  question.2 <- 'Without the execution of the code, what is the content of objects \\verb|x| and \\verb|y|?
+?'
+}
+
+if (lan == 'pt-br') {
+  
+  question.1 <- 'Considere o código a seguir.'
+  question.2 <- 'Sem executar o código, qual é o conteúdo dos objetos \\verb|x| e \\verb|y|?'
+}
+
+@
+
+\begin{question}
+
+<<echo=False, results=tex>>=
+cat(paste(question.1,collapse = ""))
+@
+
+\begin{verbatim}
+my.idx <- \Sexpr{first.value}:\Sexpr{last.value}
+x <- my.idx[\Sexpr{idx.rnd}]
+y <- my.idx[length(my.idx)-2]
+\end{verbatim}
+
+<<echo=False, results=tex>>=
+cat(paste(question.2,collapse = ""))
+@
+
+
+<<echo=False, results=tex>>=
+answerlist(my.answers)
+@
+
+\end{question}
+
+\begin{solution}
+\begin{answerlist}
+  \item True.
+  \item False.
+  \item False.
+  \item False.
+  \item False. 
+\end{answerlist}
+\end{solution}
+
+
+%% META-INFORMATION
+\extype{schoice}
+\exsolution{10000}
+\exname{Q.1}
+\exshuffle{TRUE}
+

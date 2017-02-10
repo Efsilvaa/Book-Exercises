@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "\n# This is the user-interface definition of a Shiny web application.\n# You can find out more about building applications with Shiny here:\n#\n# http://shiny.rstudio.com\n#\n\nlibrary(shiny)\n\nshinyUI(fluidPage(\n  h1('R Exercises'),\n  p('Here you can find exercises from the book ',\n    a(' Processamento e Modelagem de Dados Financeiros com o R',href='https://www.amazon.com/dp/8592243513'),\n  ', available in Amazon.'),\n  p(''),\n  p('This shiny app allows you to download exercises for a selection of chapters from the book in either the Portuguese or English language',\n  \"The content of the exercises is dynamically generated using package \",a('Exams',href='https://cran.r-project.org/package=exams'),\n     \". You can learn more about it \",a('here',href = 'https://msperlin.github.io/2017-01-30-Exams-with-dynamic-content/')),\n  h2('How to use it'),\n  p('Using this shiny app is simple, select the chapters you want exercises, your language of choice and click in Build Exam.',\n    'A new pdf file with single choice questions will be generated, along with the solution. Once it is ready, click the Download button.',\n    'In the resulting zip file youll find both files.'),\n  p(' '),\n  p('Curious on the code for this shiny app? Have a look at the code in ',a('github', href='https://github.com/msperlin')),\n\n  \n  selectInput('chapter', 'Select a chapter', \n              choices = c('All Chapters',\n                          'Chapter-2 Basic Operations',\n                          'Chapter-3 Basic Classes'),\n              selectize = TRUE),\n  selectInput('lan', 'Select a language', \n              choices = c('en',\n                          'pt-br'),\n              selectize = TRUE),\n  \n  actionButton(\"goButton\", \"Build Exam!\"),\n  \n  textOutput(\"textoutput\"),\n  conditionalPanel(\"output.textoutput=='Complete. Download file'\",\n  downloadButton(\"downloadData\", 'Download'))\n  \n  )\n)\n",
+    "created" : 1486730254233.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2045001161",
+    "id" : "370DCA7D",
+    "lastKnownWriteTime" : 1486743267,
+    "last_content_update" : 1486743267661,
+    "path" : "C:/Dropbox/My R Book/Exercicios/Exams and Shiny/Shiny App/ui.R",
+    "project_path" : "ui.R",
+    "properties" : {
+    },
+    "relative_order" : 3,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

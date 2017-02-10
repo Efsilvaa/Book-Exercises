@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "\n# This is the user-interface definition of a Shiny web application.\n# You can find out more about building applications with Shiny here:\n#\n# http://shiny.rstudio.com\n#\n\nlibrary(shiny)\n\nshinyUI(fluidPage(\n  h1('R Exercises'),\n  p('This shiny app allows you download '),\n  \n  selectInput('chapter', 'Select a chapter', \n              choices = c('All Chapters',\n                          'Chapter 2 - Basic Operations',\n                          'Chapter 3 - Basico Objects'),\n              selectize = TRUE),\n  selectInput('lan', 'Select a language', \n              choices = c('en',\n                          'pt-br'),\n              selectize = TRUE),\n  \n  actionButton(\"goButton\", \"Go!\"),\n  \n  textOutput(\"textoutput\"),\n  downloadButton(\"downloadData\", 'Download')\n  \n  )\n)\n",
+    "created" : 1486677200538.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2055358746",
+    "id" : "1E45CF6E",
+    "lastKnownWriteTime" : 1486677563,
+    "last_content_update" : 1486677563023,
+    "path" : "C:/Dropbox/My R Book/Exercicios/Exams and Shiny/Shiny App/ui.R",
+    "project_path" : "ui.R",
+    "properties" : {
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "\n# This is the server logic for a Shiny web application.\n# You can find out more about building applications with Shiny here:\n#\n# http://shiny.rstudio.com\n#\n\nlibrary(shiny)\n#install.packages('exams')\nsource('helper.R')\n\n#build.test()\n\nshinyServer(function(input, output) {\n  \n  output$textoutput <- renderText('Press \"Build Exam!\"')\n  \n  observeEvent(input$goButton, {\n    \n    lan <- input$lan\n    chapter <- input$chapter\n\n    #output$showdlbt <- textOutput('1')\n    build.test(lan = lan, \n               chapter = chapter)\n    \n    output$textoutput <- renderText('Complete. Download file')\n    \n  })\n  \n  #output$textoutput <- renderText(paste0('teste ',runif(1)))\n  \n  output$downloadData <-  downloadHandler(\n    filename = function() {\n      paste0('ExercisesR','.zip')\n    },\n    content = function(file) {\n      zipout<- paste0('ExercisesR','.zip')\n      \n      if (!file.exists(zipout)) stop('Error! cant find zip file!')\n      #build.test()\n      file.copy(zipout, file)\n    },\n    contentType = \"application/zip\")\n  \n})\n",
+    "created" : 1484740366485.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2827906064",
+    "id" : "4469B9F0",
+    "lastKnownWriteTime" : 1486739681,
+    "last_content_update" : 1486739681720,
+    "path" : "C:/Dropbox/My R Book/Exercicios/Exams and Shiny/Shiny App/server.R",
+    "project_path" : "server.R",
+    "properties" : {
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

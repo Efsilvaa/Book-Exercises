@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "rm(list=ls())\nlibrary(exams)\nlibrary(stringr)\n\nmy.d <- 'C:/Dropbox/My R Book/Exercicios/Exams and Shiny/'\nsetwd(my.d)\n\nsource('Shiny App/helper.R')\n\nmy.f <- list.files(path = 'Shiny App/My_Exercises', full.names = T)\nn.q <- length(my.f)\n\nn.ver <- 1\n\n\n\npossible.chapters <- c('All Chapters',\n                       'Chapter-2',\n                       'Chapter-3 - Basic Objects')\n\nmy.chapter <- possible.chapters[2]\n\n#my.f <- my.f[str_detect(my.f, my.chapter)]\n\nmy.f <- my.f[1:7]\n\n# set lan (pt=br or en)\nlan <- 'pt-br'\nlan <- 'en'\n\nif (lan == 'pt-br'){\n  my.template <- 'myexam_pt-br.tex'\n  my.name <- paste0('Exercicios-R_',Sys.Date())\n  \n} \nif (lan == 'en') {\n  my.template <- 'myexam_en.tex'\n  my.name <- paste0('Exercicios-R_',Sys.Date(),'_')\n}\n\nf.out <- paste0(my.name,'_1.pdf')\n#my.f <- my.f[1:5]\n#if (file.exists(f.out)) file.remove(f.out)\n\nformat.out <- 'pdf'\n#format.out <- 'html'\n\nif (format.out == 'pdf') {\n  \n  my.exam <- exams2pdf(file = my.f,\n                       n=n.ver,\n                       inputs = paste0(getwd(),'/Shiny App/Supplementary files/CAPADigital_DadosFinanceirosR.jpg'),\n                       name=my.name,\n                       template = paste0(getwd(),'/Shiny App/Supplementary files/',my.template),\n                       language = 'pt-br',\n                       institution = 'Universidade Federal do Rio Grande do Sul',\n                       title = 'MQ - Prova II',\n                       course = 'PPGA',\n                       duplex = T,\n                       encoding = 'UTF-8',\n                       dir = 'Pdf Out',\n                       #edir = 'temp files',\n                       #tdir = 'temp files 2',\n                       #sdir = 'temp files 3',\n                       date = '2016-06-30', intro = '',\n                       verbose = TRUE)\n  \n}\n\nif (format.out == 'html') {\n  my.exam <- exams2html(file = my.f,\n                        #n=n.ver,\n                        name='myname',\n                        encoding = 'UTF-8',\n                        dir = 'html Out',\n                        verbose = TRUE, solution = F)\n  \n}\n\n",
+    "created" : 1486731419855.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "872929675",
+    "id" : "F8A04DFC",
+    "lastKnownWriteTime" : 1486727156,
+    "last_content_update" : 1486727156,
+    "path" : "C:/Dropbox/My R Book/Exercicios/Exams and Shiny/S_Test_Exam.R",
+    "project_path" : null,
+    "properties" : {
+    },
+    "relative_order" : 4,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

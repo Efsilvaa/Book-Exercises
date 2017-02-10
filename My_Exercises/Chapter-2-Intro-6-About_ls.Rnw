@@ -1,0 +1,58 @@
+<<echo=FALSE, results=hide>>=
+
+if (lan == 'en') {
+  question.1 <- 'Consider the execution of the following code in R:'
+  question.2 <- 'Which of the following commands will replicate the contents of \\verb|my.objs|?'
+  
+}
+
+if (lan == 'pt-br') {
+  question.1 <- 'Considere a execução do seguinte código no R'
+  question.2 <- 'Quais dos comandos abaixo replicaria o conteúdo de \\verb|my.objs|?'
+}
+
+@
+
+\begin{question}
+
+<<echo=False, results=tex>>=
+cat(paste(question.1,collapse = ""))
+@
+
+<<eval=FALSE>>=
+rm(list = ls())
+x=1:100
+y=2:100
+my.objs <- ls()
+@
+
+<<echo=False, results=tex>>=
+cat(paste(question.2,collapse = ""))
+@
+
+\begin{answerlist}
+\item \verb|c('x','y')|
+\item \verb|paste('x','y')|
+\item \verb|paste0('x','y')|
+\item \verb|print('my.objs')|
+\item \verb|my.objs['x']|
+\end{answerlist}
+
+\end{question}
+
+\begin{solution}
+\begin{answerlist}
+  \item True.
+  \item False.
+  \item False.
+  \item False.
+  \item False. 
+\end{answerlist}
+\end{solution}
+
+%% META-INFORMATION
+\extype{schoice}
+\exsolution{10000}
+\exname{Q.1}
+\exshuffle{TRUE}
+

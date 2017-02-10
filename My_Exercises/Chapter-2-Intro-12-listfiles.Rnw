@@ -1,0 +1,60 @@
+<<echo=FALSE, results=hide>>=
+
+
+if (lan == 'en') {
+  question.1 <- 'If we executed the following code in R, what would be the result?'
+
+  my.answers <- character(5)
+  my.answers[1] <- 'Object \\verb|my.f| will hold all filenames in folder \\verb|data| that have the \\verb|.csv| extension. It will also display the names of the subfolders'
+  my.answers[2] <-'Object \\verb|my.f| will hold all objects from namespace \\verb|data|'
+my.answers[3] <- 'The object will return all files from folder \\verb|data|'
+my.answers[4] <- 'The call to \\verb|list.files| will look for all filenames that start with \\verb|data|'
+my.answers[5] <- paste0('The object \\verb|my.f| will show the number of packages in CRAN in next week, ', Sys.Date()+7)
+}
+
+if (lan == 'pt-br') {
+  question.1 <- 'Caso fosse executado o seguinte código no R, qual seria o resultado ?'
+  
+  my.answers <- character(5)
+  my.answers[1] <- 'Objeto \\verb|my.f| armazena todos os nomes de arquivos no diretório \\verb|data| que contenham a extensão \\verb|.csv|. O comando também mostrará o nome dos subdiretórios de cada arquivo'
+  my.answers[2] <-'Objeto \\verb|my.f| armazenará todos os objetos do \\textit{namespace} \\verb|data|'
+my.answers[3] <- 'O objeto irá retornar todos os nomes dos arquivos no folder \\verb|data|'
+my.answers[4] <- 'O resultado será um objeto que terá em seu conteúdo todos os nomes de arquivos que começam com o texto \\verb|data|'
+my.answers[5] <- paste0('O objeto \\verb|my.f| irá mostrar o número de pacotes no CRAN para a próxima semana, ', Sys.Date()+7)
+
+}
+
+@
+
+\begin{question}
+
+<<echo=False, results=tex>>=
+cat(paste(question.1,collapse = ""))
+@
+
+<<eval=FALSE>>=
+my.f <- list.files(path = 'data', pattern = '*.csv',full.names = TRUE)
+@
+
+<<echo=FALSE, results=tex>>=
+exams::answerlist(my.answers)
+@
+
+\end{question}
+
+\begin{solution}
+\begin{answerlist}
+  \item True.
+  \item False.
+  \item False.
+  \item False.
+  \item False. 
+\end{answerlist}
+\end{solution}
+
+%% META-INFORMATION
+\extype{schoice}
+\exsolution{10000}
+\exname{Q.1}
+\exshuffle{TRUE}
+

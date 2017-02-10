@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "\n# This is the server logic for a Shiny web application.\n# You can find out more about building applications with Shiny here:\n#\n# http://shiny.rstudio.com\n#\n\nlibrary(shiny)\n#install.packages('exams')\nsource('helper.R')\n\n#build.test()\n\nshinyServer(function(input, output) {\n  \n  output$textoutput <- renderText('Press Go to generate test..')\n  \n  observeEvent(input$goButton, {\n    \n    lan <- input$lan\n    #output$showdlbt <- textOutput('1')\n    build.test(lan)\n    \n    output$textoutput <- renderText('Complete. Download file')\n    \n  })\n  \n  #output$textoutput <- renderText(paste0('teste ',runif(1)))\n  \n  output$downloadData <-  downloadHandler(\n    filename = function() { \n      paste0('Exercicios-R_',Sys.Date(),'.pdf')\n    },\n    content = function(file) {\n      \n      if (!file.exists(paste0('Exercicios-R_',Sys.Date(),'.pdf'))) stop('error! cant find file')\n      #build.test()\n      file.copy(paste0('Exercicios-R_',Sys.Date(),'.pdf'), file)\n    },\n    contentType = \"application/pdf\")\n  \n})\n",
+    "created" : 1484240451729.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2256983143",
+    "id" : "10A4914C",
+    "lastKnownWriteTime" : 1486679200,
+    "last_content_update" : 1486679200931,
+    "path" : "C:/Dropbox/My R Book/Exercicios/Exams and Shiny/Shiny App/server.R",
+    "project_path" : "server.R",
+    "properties" : {
+    },
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

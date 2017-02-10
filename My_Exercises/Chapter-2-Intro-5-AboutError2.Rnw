@@ -1,0 +1,55 @@
+<<echo=FALSE, results=hide>>=
+
+if (lan == 'en') {
+  question.1 <- 'The following code was executed in R.'
+  question.2 <- 'Which of the following commands will result in an error?'
+  
+}
+
+if (lan == 'pt-br') {
+  question.1 <- 'Dado que o código abaixo foi executado no R.'
+  question.2 <- 'Quais dos comandos abaixo resultaria em um erro?'
+}
+
+@
+
+\begin{question}
+
+<<echo=False, results=tex>>=
+cat(paste(question.1,collapse = ""))
+@
+
+<<eval=FALSE>>=
+my.vec <- runif(100)
+@
+
+<<echo=False, results=tex>>=
+cat(paste(question.2,collapse = ""))
+@
+
+\begin{answerlist}
+\item \verb|my.vec*'a'|
+\item \verb|my.vec + runif(100)|
+\item \verb|my.vec + runif(101)|
+\item \verb|my.vec[-1]|
+\item \verb|my.vec[101]|
+\end{answerlist}
+
+\end{question}
+
+\begin{solution}
+\begin{answerlist}
+  \item True.
+  \item False.
+  \item False.
+  \item False.
+  \item False. 
+\end{answerlist}
+\end{solution}
+
+%% META-INFORMATION
+\extype{schoice}
+\exsolution{10000}
+\exname{Q.1}
+\exshuffle{TRUE}
+

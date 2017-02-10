@@ -1,0 +1,70 @@
+<<echo=FALSE, results=hide>>=
+my.nrows <- sample(5:10,1)
+my.ncols <- sample(2:5,1)
+
+x <- matrix(runif(my.nrows*my.ncols), nrow = my.nrows, ncol = my.ncols)
+
+my.answers <- character()
+my.answers[1] <- paste(dim(x)[1], ncol(x), length(x), sep = ', ')
+my.answers[2] <- paste(dim(x)[2], ncol(x)-1, length(x), sep = ', ')
+my.answers[3:5] <- paste(dim(x)[1]+sample(1:10,3), 
+                         ncol(x)+sample(-10:-5,3), 
+                         length(x)+sample(-5:5,1), 
+                         sep = ', ')
+
+if (lan == 'en') {
+  question.1 <- 'Consider the creation of the following matrix M:'
+  question.2 <- 'If we executed in R the commands \\verb|size(x)[1]|, \\verb|ncol(x)| and \\verb|length(x)| in that exact order, what would be the result?'
+  
+}
+
+if (lan == 'pt-br') {
+  
+  question.1 <- 'Considere a criação da seguinte matriz M:'
+  question.2 <- 'Caso executássemos os comandos  \\verb|size(x)[1]|, \\verb|ncol(x)| e \\verb|length(x)|, nessa mesma ordem, qual seria o resultado?'
+}
+
+
+
+@
+
+\begin{question}
+
+<<echo=False, results=tex>>=
+cat(paste(question.1,collapse = ""))
+@
+
+<<echo=FALSE>>=
+print(x)
+@
+
+<<echo=False, results=tex>>=
+cat(paste(question.2,collapse = ""))
+@
+
+\begin{answerlist}
+\item \Sexpr{my.answers[1]}
+\item \Sexpr{my.answers[2]}
+\item \Sexpr{my.answers[3]}
+\item \Sexpr{my.answers[4]}
+\item \Sexpr{my.answers[5]}
+\end{answerlist}
+
+\end{question}
+
+\begin{solution}
+\begin{answerlist}
+  \item True.
+  \item False.
+  \item False.
+  \item False.
+  \item False. 
+\end{answerlist}
+\end{solution}
+
+%% META-INFORMATION
+\extype{schoice}
+\exsolution{10000}
+\exname{Q.1}
+\exshuffle{TRUE}
+

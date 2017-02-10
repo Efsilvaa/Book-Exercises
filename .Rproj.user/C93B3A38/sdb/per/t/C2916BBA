@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "\n\nbuild.test <- function(lan='pt-br'){\n  require(exams)\n  \n  lan <<- lan\n  \n  if (lan == 'pt-br'){\n    my.template <- 'myexam_pt-br.tex'\n    my.name <- paste0('Exercicios-R_',Sys.Date())\n    \n  } \n  if (lan == 'en') {\n    my.template <- 'myexam_en.tex'\n    my.name <- paste0('Exercicios-R_',Sys.Date())\n  }\n  \n  my.f <- list.files(path = 'My_Exercises', full.names = T)\n  n.q <- length(my.f)\n  \n  n.ver <- 1\n  \n  f.out <- paste0(my.name,'1.pdf')\n  \n  #if (file.exists(f.out)) file.remove(f.out)\n  \n  my.exam <- exams2pdf(file = my.f,\n                       n=n.ver,\n                       name=my.name,\n                       template = my.template,\n                       language = 'pt-br',\n                       institution = 'Universidade Federal do Rio Grande do Sul',\n                       title = 'MQ - Prova II',\n                       course = 'PPGA',\n                       duplex = T,\n                       encoding = 'UTF-8',\n                       dir = 'Pdf Out',\n                       #edir = 'temp files',tdir = 'temp files',\n                       date = '2016-06-30', intro = '',\n                       verbose = TRUE)\n\n  my.log <- file.exists(f.out)\n  \n  file.rename(paste0('Pdf Out/',my.name,'1.pdf'), paste0(my.name,'.pdf'))\n\n  if (file.exists(f.out)) file.remove(f.out)\n  \n  #browser()\n  return(my.log)\n}\n\ngen.rnd.vec <- function(){\n  rnd.vec.1 <- c(1, seq(runif(1,0.1,0.2), runif(1,0.7,0.8), length.out = 4))\n  rnd.vec.2 <- c(1, seq(runif(1,1.1,1.2), runif(1,1.7, 1.8), length.out = 4))\n  rnd.vec.3 <- c(1, seq(runif(1,0.25,0.5),runif(1,0.6,0.8), length.out = 2), \n                 seq(runif(1,1.2,2), length.out = 2))\n  \n  rnd.l <- list(rnd.vec.1, rnd.vec.2, rnd.vec.3)\n  rnd.vec <- sample(rnd.l,1)[[1]]\n  return(rnd.vec)\n}\n",
+    "created" : 1484241477722.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1449170950",
+    "id" : "C2916BBA",
+    "lastKnownWriteTime" : 1486679011,
+    "last_content_update" : 1486679011433,
+    "path" : "C:/Dropbox/My R Book/Exercicios/Exams and Shiny/Shiny App/helper.R",
+    "project_path" : "helper.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 3,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
